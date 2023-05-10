@@ -118,4 +118,4 @@ if __name__ == "__main__":
         'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'z', 
         'z', 'z', 'z', 'z', 'z', 'z', 'z'
     ]
-    shinny_magikarp(path_to_tesseract, steps=steps, n_sweet_scent=0)
+    shinny_magikarp(path_to_tesseract, steps=steps, n_sweet_scent=4)
