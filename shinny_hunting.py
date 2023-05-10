@@ -75,7 +75,7 @@ def shinny_magikarp(path_to_tesseract, steps=[], sweet_scent_key='7', ava_sweet_
     # TODO: Movement times can be better calibrated to make the hunting faster
     # TODO: What if we cant find the 'RUN' button ?
 
-    print('Sweet scent available: ' + ava_sweet_scent)
+    print('Sweet scent available:', ava_sweet_scent)
     if ava_sweet_scent > 0:
         # start with the catch
         press_key(sweet_scent_key)
@@ -118,4 +118,4 @@ if __name__ == "__main__":
         'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'z', 
         'z', 'z', 'z', 'z', 'z', 'z', 'z'
     ]
-    shinny_magikarp(path_to_tesseract, steps=steps, n_sweet_scent=4)
+    shinny_magikarp(path_to_tesseract, steps=steps, ava_sweet_scent=0, n_sweet_scent=4)
