@@ -59,7 +59,7 @@ def reverse_steps(steps, new_steps=[]):
     reverse.extend(new_steps)
     return reverse
 
-def shinny_magikarp(path_to_tesseract, steps=[], sweet_scent_key='7', ava_sweet_scent=4, n_sweet_scent=4):
+def shinny_hunt(path_to_tesseract, steps=[], new_steps=[], sweet_scent_key='7', ava_sweet_scent=4, n_sweet_scent=4):
     """Find shinny magikarp with sweet scent and without leppa berries
     Always start from the location where magikarp is found.
     Make sure you use a pokemon with the Run Away ability to always escape from battle.
@@ -67,6 +67,7 @@ def shinny_magikarp(path_to_tesseract, steps=[], sweet_scent_key='7', ava_sweet_
     Args:
         path_to_tesseract (string): Path to tesseract
         steps (list): List of strings with the keyboard presses
+        new_steps (list): List of strings for aditional moves used from the PC to the specific location
         sweet_scent_key (string): Sweet scent hotkey
         ava_sweet_scent (int): Number of sweet scent moves available
         n_sweet_scent (int): Number of sweet scent moves 
@@ -94,7 +95,7 @@ def shinny_magikarp(path_to_tesseract, steps=[], sweet_scent_key='7', ava_sweet_
             # sleep a little to leave battle
             time.sleep(1.4)
             # repeat until we find shinny or sweet scent is out
-            shinny_magikarp(path_to_tesseract, steps, sweet_scent_key, ava_sweet_scent-1)
+            shinny_hunt(path_to_tesseract, steps, sweet_scent_key, ava_sweet_scent-1)
         else:
             print("Shinny found GG EZ")
     else:
@@ -102,11 +103,11 @@ def shinny_magikarp(path_to_tesseract, steps=[], sweet_scent_key='7', ava_sweet_
         # go to PC
         for step in steps:
             press_key(step)
-        reversed_steps = reverse_steps(steps, new_steps=['z', 'z', 'z'])
+        reversed_steps = reverse_steps(steps, new_steps)
         for step in reversed_steps:
             press_key(step)
         # repeat with sweet scent reset
-        shinny_magikarp(path_to_tesseract, steps, sweet_scent_key, ava_sweet_scent=n_sweet_scent)
+        shinny_hunt(path_to_tesseract, steps, sweet_scent_key, ava_sweet_scent=n_sweet_scent)
         
 
 if __name__ == "__main__":
@@ -118,4 +119,5 @@ if __name__ == "__main__":
         'up', 'up', 'up', 'up', 'up', 'up', 'up', 'up', 'z', 
         'z', 'z', 'z', 'z', 'z', 'z', 'z'
     ]
-    shinny_magikarp(path_to_tesseract, steps=steps, ava_sweet_scent=0, n_sweet_scent=4)
+    new_steps = ['z', 'z', 'z']
+    shinny_hunt(path_to_tesseract, steps=steps, new_steps=new_steps, ava_sweet_scent=4, n_sweet_scent=4)
